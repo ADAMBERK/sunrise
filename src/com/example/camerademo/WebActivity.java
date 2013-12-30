@@ -55,5 +55,11 @@ public class WebActivity extends Activity{
 	    
 	        }
 	    }
+	 @Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		com.facebook.AppEventsLogger.activateApp(getApplicationContext(), "1378212579084638");
+	}
 
 }

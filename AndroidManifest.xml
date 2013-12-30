@@ -20,7 +20,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.example.camerademo.MainActivity"
+            android:name="com.example.camerademo.MainActivityold"
             android:screenOrientation="portrait"
             android:label="@string/app_name" >
             <intent-filter>

@@ -15,6 +15,9 @@ import java.util.TimeZone;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -27,16 +30,14 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.StrictMode;
 import android.util.Log;
-import android.util.PrintStreamPrinter;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.joya.matchthesunset.R;
 
 public class MainActivityold extends Activity implements SurfaceHolder.Callback{
@@ -319,7 +320,8 @@ protected void onResume() {
 	                 // open a URL connection to the Servlet
 	               FileInputStream fileInputStream = new FileInputStream("/mnt/sdcard/test.png");
 	              // URL url = new URL("http://www.groupshot.us/imageupload.php");
-	               URL url = new URL("http://www.solsisters.groupshot.us/slider/upload.php");
+	             
+	               URL url = new URL("http://www.solsisters.groupshot.us/sunset/upload.php");
 	               // Open a HTTP  connection to  the URL
 	               conn = (HttpURLConnection) url.openConnection();
 	               conn.setDoInput(true); // Allow Inputs
@@ -367,9 +369,25 @@ protected void onResume() {
 	               // Responses from the server (code and message)
 	               System.out.println("66");
 	                   runOnUiThread(new Runnable() {
-	                        public void run() {
+	                        @SuppressLint("NewApi")
+							public void run() {
 	                             
-	                           
+	                        	
+	                        	// build notification
+	                        	// the addAction re-use the same intent to keep the example short
+	                        	Notification n  = new Notification.Builder(MainActivityold.this)
+	                        	        .setContentTitle("it should say Your match has been made - view it here")
+	                        	        .setContentText("http://www.solsisters.groupshot.us/sunset/uploads/1388042906679.png")
+	                        	        .setSmallIcon(R.drawable.logo)
+	                        	        .setAutoCancel(true)
+	                        	       
+	                        	        .build();
+	                        	    
+	                        	  
+	                        	NotificationManager notificationManager = 
+	                        	  (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+
+	                        	notificationManager.notify(0, n);
 	                             
 	                        
 	                            Toast.makeText(MainActivityold.this, "File Upload Complete.",

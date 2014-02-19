@@ -332,7 +332,7 @@ protected void onResume() {
                   // open a URL connection to the Servlet
             	 FileInputStream fileInputStream = new FileInputStream("/mnt/sdcard/test.png");
 	              // URL url = new URL("http://www.groupshot.us/imageupload.php");
-	               URL url = new URL("http://www.solsisters.groupshot.us/slider/upload.php");
+	               URL url = new URL("http://www.solsisters.groupshot.us/sunset/upload.php");
                  
                 // Open a HTTP  connection to  the URL
                 conn = (HttpURLConnection) url.openConnection();
